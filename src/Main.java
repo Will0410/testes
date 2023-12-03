@@ -21,6 +21,7 @@ public class Main {
 
             }
 
+
             int codMedico = 33234;
             Boolean medicosnosistema = true;
             int [] Bonus = {45717,788,4000,1200,3456,200,700,1500,4578,3699,4788,7888};
