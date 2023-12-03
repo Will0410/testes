@@ -1,24 +1,37 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-import java.util.Scanner;
+
+import java.sql.*;
+
+
 public class Main {
     public static void main(String[] args) {
 
 
+        try {
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/java",
+                    "root",
+                    "Ju04102005"
+            );
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM iniciativa");
 
+            if (resultSet.next()){
+                System.out.println(resultSet.getString("user"));
+                System.out.println(resultSet.getString("idade"));
 
+            }
 
-            int codMedico = 36921;
+            int codMedico = 33234;
             Boolean medicosnosistema = true;
             int [] Bonus = {45717,788,4000,1200,3456,200,700,1500,4578,3699,4788,7888};
 
-        switch (codMedico) {
+            switch (codMedico) {
                 case 33220:
                     System.out.println("Bem-Vindo "+ "Alan");
                     System.out.println("Sua Bonificação será de R$ "+ Bonus[0]);
                     break;
                 case 33234:
-                    System.out.println("Bem-Vindo "+ "William");
+                    System.out.println("Bem-Vindo "+  resultSet.getString("user"  ));
                     System.out.println("Sua Bonificação será de R$ "+ Bonus[1]);
                     break;
                 case 33247:
@@ -58,7 +71,7 @@ public class Main {
                     System.out.println("Sua Bonificação será de R$ "+ Bonus[10]);
                     break;
                 case 33221:
-                    System.out.println("Bem-Vindo "+ "Beatriz");
+                    System.out.println(("Bem-Vindo ")+ resultSet.getString("user" ));
                     System.out.println("Sua Bonificação será de R$ "+ Bonus[11]);
                     break;
                 default:
@@ -66,9 +79,20 @@ public class Main {
                     break;
 
 
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
                 }
             }
-        }
+
 
 
 
